@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import CreateExerciseList from './components/CreateExerciseList';
+import InputForm from './components/InputForm';
+import { IExercise } from './models/index';
 
 function App() {
+  const [exercises, setExercises] = useState<IExercise[]>([]);
+
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div className='container'>
+      <header className="title">
+        <h2>Учёт тренировок</h2>
       </header>
+      <InputForm 
+        exercises={exercises} 
+        setExercises={setExercises}
+      />
+
+      <div>
+        <div>
+          <div>
+            <CreateExerciseList exercises={exercises} />
+          </div>
+        </div>
+      </div>
+
+      </div>
     </div>
   );
 }
