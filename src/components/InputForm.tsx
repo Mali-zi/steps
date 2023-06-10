@@ -1,26 +1,8 @@
 import { useState } from 'react';
 import { Props } from '../models/index';
+import { ButtonProps } from '../models/index';
 
-
-
-export default function InputForm({exercises, setExercises}: Props) {
-  const [newExercise, setNewExercise] = useState('');
-  const [newDate, setNewDate] = useState('');
-
-
-  function addNewExercise() {
-    setExercises([
-      ...exercises,
-      {
-        id: Math.floor(Math.random() * 100) + 1,
-        date: newDate, 
-        distance: newExercise
-      }
-    ]);
-    setNewDate('');
-    setNewExercise('');
-  };
-
+export default function InputForm({addNewExercise}: ButtonProps) {
 
   return (
     <form className='inputForm'>
@@ -42,7 +24,13 @@ export default function InputForm({exercises, setExercises}: Props) {
         onChange={(e) => setNewExercise(e.target.value)}
       />
       </label>
-      <input type='button' className='ok' value='OK' onClick={addNewExercise} />
+      <button 
+        type='button' 
+        className='ok' 
+        onClick={addNewExercise}
+      >
+        OK
+      </button>
     </form>
 
   )

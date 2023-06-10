@@ -3,11 +3,26 @@ import './App.css';
 import CreateExerciseList from './components/CreateExerciseList';
 import InputForm from './components/InputForm';
 import { IExercise } from './models/index';
+import { Props } from '../models/index';
 
 function App() {
   const [exercises, setExercises] = useState<IExercise[]>([]);
+  const [newExercise, setNewExercise] = useState('');
+  const [newDate, setNewDate] = useState('');
 
 
+  function addNewExercise() {
+    setExercises([
+      ...exercises,
+      {
+        id: Math.floor(Math.random() * 100) + 1,
+        date: newDate, 
+        distance: newExercise
+      }
+    ]);
+    setNewDate('');
+    setNewExercise('');
+  };
   
 
   return (
@@ -24,7 +39,7 @@ function App() {
       <div>
         <div>
           <div>
-            <CreateExerciseList exercises={exercises} />
+            <CreateExerciseList addNewExercise={addNewExercise} />
           </div>
         </div>
       </div>

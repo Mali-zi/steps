@@ -4,7 +4,13 @@ export interface IExercise {
   distance: string | undefined
 }
 
-export type Props = {
+export interface Props {
   exercises: IExercise[];
   setExercises: (val: IExercise[]) => void;
 };
+
+export interface ButtonProps {
+  handleDelete?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleEdit?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  addNewExercise?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
