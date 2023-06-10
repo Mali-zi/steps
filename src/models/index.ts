@@ -1,12 +1,16 @@
 export interface IExercise {
-  id: number | undefined,
-  date: string | undefined, 
-  distance: string | undefined
+  id: number,
+  date: string, 
+  distance: string | string
 }
 
 export interface Props {
   exercises: IExercise[];
   setExercises: (val: IExercise[]) => void;
+  newDate?: string, 
+  setNewDate: (val: string) => void;
+  newExercise?: string,
+  setNewExercise: (val: string) => void;
 };
 
 export interface ButtonProps {

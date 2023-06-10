@@ -2,22 +2,26 @@ import ButtonEdit from './ButtonEdit';
 import ButtonDelete from './ButtonDelete';
 import { Props } from '../models/index';
 
-export default function CreateExerciseList({exercises, setExercises}: Props) {
-
+export default function CreateExerciseList({exercises, setExercises, setNewDate, setNewExercise}: Props) {
   const exerciseList = exercises.map(exercise => {
     return (
       <li 
         key={exercise.id}
+        className="mainList"
       >
-        {exercise.date}
-        {exercise.distance}
+        <div className='datePlace'>
+          {exercise.date}
+        </div>
+        <div className='distancePlace'>
+          {exercise.distance}
+        </div>
         <div className="btns">
           <ButtonEdit handleEdit={() => {
-              setExercises(
-                exercises.filter(a =>
-                  a.id !== exercise.id
-                )
-              );
+            setExercises(
+              exercises.filter(a =>
+                a.id !== exercise.id
+              )
+            );
             setNewExercise(exercise.distance);
             setNewDate(exercise.date);
           }} 
@@ -36,8 +40,10 @@ export default function CreateExerciseList({exercises, setExercises}: Props) {
   })
 
   return (
-    <ul>
-      {exerciseList}
-    </ul>
+    <div className='exerciseStore'>
+      <ul className="mylist">
+        {exerciseList}
+      </ul>
+    </div>
   )
 }

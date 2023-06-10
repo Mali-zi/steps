@@ -1,29 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import CreateExerciseList from './components/CreateExerciseList';
 import InputForm from './components/InputForm';
 import { IExercise } from './models/index';
-import { Props } from '../models/index';
 
 function App() {
   const [exercises, setExercises] = useState<IExercise[]>([]);
   const [newExercise, setNewExercise] = useState('');
-  const [newDate, setNewDate] = useState('');
-
-
-  function addNewExercise() {
-    setExercises([
-      ...exercises,
-      {
-        id: Math.floor(Math.random() * 100) + 1,
-        date: newDate, 
-        distance: newExercise
-      }
-    ]);
-    setNewDate('');
-    setNewExercise('');
-  };
-  
+  const [newDate, setNewDate] = useState(new Date().toLocaleString("RU"));
 
   return (
     <div className="App">
@@ -31,18 +15,28 @@ function App() {
       <header className="title">
         <h2>Учёт тренировок</h2>
       </header>
+      
       <InputForm 
         exercises={exercises} 
         setExercises={setExercises}
+        newExercise={newExercise}
+        setNewExercise={setNewExercise}
+        newDate={newDate}
+        setNewDate={setNewDate}
       />
 
-      <div>
-        <div>
-          <div>
-            <CreateExerciseList addNewExercise={addNewExercise} />
-          </div>
-        </div>
-      </div>
+      <header className='titleStore'>
+        <div>Дата (ДД.MM.ГГ)</div>
+        <div>Пройдено км</div>
+        <div>Действия</div>
+      </header>
+
+      <CreateExerciseList 
+        exercises={exercises} 
+        setExercises={setExercises}
+        setNewDate={setNewDate}
+        setNewExercise={setNewExercise}
+      />
 
       </div>
     </div>

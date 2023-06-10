@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { Props } from '../models/index';
-import { ButtonProps } from '../models/index';
 
-export default function InputForm({addNewExercise}: ButtonProps) {
+export default function InputForm({exercises, setExercises, newDate, setNewDate, newExercise, setNewExercise}: Props) {
 
   return (
     <form className='inputForm'>
@@ -11,6 +9,7 @@ export default function InputForm({addNewExercise}: ButtonProps) {
         id='dateLabel'
         type='date'
         className='inputDatePlace'
+        defaultValue={newDate}
         value={newDate} 
         onChange={(e) => setNewDate(e.target.value)}
       />
@@ -27,7 +26,20 @@ export default function InputForm({addNewExercise}: ButtonProps) {
       <button 
         type='button' 
         className='ok' 
-        onClick={addNewExercise}
+        onClick={() => {
+          if (newDate && newExercise) {
+            setExercises([
+              ...exercises,
+              {
+                id: Math.floor(Math.random() * 100) + 1,
+                date: newDate, 
+                distance: newExercise
+              }
+            ]);;
+            setNewDate('');
+            setNewExercise('');
+          }
+        }}
       >
         OK
       </button>
