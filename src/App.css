@@ -15,7 +15,6 @@ body {
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  background-color: #c0e8fa;
 }
 
 .container {
@@ -23,7 +22,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
 }
 
 .title {
@@ -45,13 +43,13 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  background-color: #fff;
 }
 
 label {
   display: block;
   margin-right: 10px;
   width: 180px;
-  color: #2b2e4a;
   text-align: start;
 }
 
@@ -67,12 +65,11 @@ label {
 .mainList {
   display: flex;
   position: relative;
-  cursor: pointer;
   transition: 0.4s;
-  background-color: #eee;
   min-height: 1.5rem;
   margin-top: 1rem;
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .datePlace, .distancePlace {
@@ -88,27 +85,20 @@ label {
 .btns {
   width: 100%;
   height: 1.5rem;
-  background-color: inherit;
   text-align: right;
 }
 
-.delete {
+.delete, .edit {
   display: inline-block;
-  cursor: pointer;
-  fill: #f44336;
   height: 1.5rem;
   width: 1.5rem;
   border: none;
-  margin-left: 10px;
+  cursor: pointer;
+  background-color: #fff;
 }
 
-.edit {
-  display: inline-block;
-  cursor: pointer;
-  fill: #202da8;
-  height: 1.5rem;
-  width: 1.5rem;
-  border: none;
+.delete {
+  margin-left: 10px;
 }
 
 .icon {
@@ -134,8 +124,6 @@ label {
   font-size: 1rem;
   border-radius: 20px;
   border-width: 2px;
-  background-color: #e5eeb4;
-  border-color: #000000;
   border-style: solid;
   padding: 20px 0;
 }

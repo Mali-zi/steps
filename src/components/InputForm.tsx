@@ -3,14 +3,27 @@ import { Props } from '../models/index';
 export default function InputForm({exercises, setExercises, newDate, setNewDate, newExercise, setNewExercise}: Props) {
   function handleClick() {
     if (newDate && newExercise) {
-      const nextList = [
-        ...exercises,
-        {
-          id: Math.floor(Math.random() * 100) + 1,
-          date: newDate, 
-          distance: newExercise
+      let check = 0;
+      let nextList = exercises.map(item => {
+        if (item.date === newDate) {
+          check = 1;
+          return { ...item, distance: (parseFloat(item.distance) + parseFloat(newExercise)).toString()};
+        } else {
+          return item;
         }
-      ];
+      });
+
+      if (check === 0) {
+        nextList = [
+          ...nextList,
+          {
+            id: Math.floor(Math.random() * 100) + 1,
+            date: newDate, 
+            distance: newExercise
+          }
+        ];
+      };
+
       nextList.sort((a,b) => Date.parse(a.date) - Date.parse(b.date));
       setExercises(nextList);
       setNewDate('');

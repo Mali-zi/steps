@@ -1,7 +1,7 @@
 export interface IExercise {
   id: number,
   date: string, 
-  distance: string | string
+  distance: string
 }
 
 export interface Props {

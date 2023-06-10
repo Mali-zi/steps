@@ -6,7 +6,7 @@ import { IExercise } from './models/index';
 
 function App() {
   const [exercises, setExercises] = useState<IExercise[]>([]);
-  const [newExercise, setNewExercise] = useState('');
+  const [newExercise, setNewExercise] = useState<string>('');
   const [newDate, setNewDate] = useState(new Date().toLocaleString("RU"));
 
   return (
