@@ -3,6 +3,7 @@ import ButtonDelete from './ButtonDelete';
 import { Props } from '../models/index';
 
 export default function CreateExerciseList({exercises, setExercises, setNewDate, setNewExercise}: Props) {
+
   const exerciseList = exercises.map(exercise => {
     return (
       <li 

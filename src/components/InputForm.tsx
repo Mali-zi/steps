@@ -1,6 +1,22 @@
 import { Props } from '../models/index';
 
 export default function InputForm({exercises, setExercises, newDate, setNewDate, newExercise, setNewExercise}: Props) {
+  function handleClick() {
+    if (newDate && newExercise) {
+      const nextList = [
+        ...exercises,
+        {
+          id: Math.floor(Math.random() * 100) + 1,
+          date: newDate, 
+          distance: newExercise
+        }
+      ];
+      nextList.sort((a,b) => Date.parse(a.date) - Date.parse(b.date));
+      setExercises(nextList);
+      setNewDate('');
+      setNewExercise('');
+    };
+  };
 
   return (
     <form className='inputForm'>
@@ -26,24 +42,10 @@ export default function InputForm({exercises, setExercises, newDate, setNewDate,
       <button 
         type='button' 
         className='ok' 
-        onClick={() => {
-          if (newDate && newExercise) {
-            setExercises([
-              ...exercises,
-              {
-                id: Math.floor(Math.random() * 100) + 1,
-                date: newDate, 
-                distance: newExercise
-              }
-            ]);;
-            setNewDate('');
-            setNewExercise('');
-          }
-        }}
+        onClick={handleClick}
       >
         OK
       </button>
     </form>
-
   )
 }
