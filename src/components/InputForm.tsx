@@ -31,6 +31,20 @@ export default function InputForm({exercises, setExercises, newDate, setNewDate,
     };
   };
 
+  function handleChangeNewExercise(e: React.ChangeEvent<HTMLInputElement>) {
+    setNewExercise(e.target.value)
+  };
+
+  const allowChars: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if(allowChars.indexOf(event.key) === -1 && event.key !== 'Backspace' 
+      && event.key !== 'Delete' && event.key !== 'End' 
+      && !(event.ctrlKey && event.key === "c") && !(event.ctrlKey && event.key === "v")){
+      event.preventDefault();
+    };    
+  };
+
   return (
     <form className='inputForm'>
       <label htmlFor='dateLabel'>Дата (ДД.MM.ГГ)
@@ -49,7 +63,8 @@ export default function InputForm({exercises, setExercises, newDate, setNewDate,
         type='text'
         className='inputDistancePlace'
         value={newExercise} 
-        onChange={(e) => setNewExercise(e.target.value)}
+        onChange={handleChangeNewExercise}
+        onKeyDown={handleKeyDown}
       />
       </label>
       <button 
