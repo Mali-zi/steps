@@ -1,9 +1,8 @@
 # Учёт тренировок (steps)
 
-## Tools
-React / Typescript
+Tools: React / Typescript
 
-## [Deploy](https://mali-zi-steps.netlify.app/)
+[Deploy](https://mali-zi-steps.netlify.app/)
 
 Создано приложение, которое хранит данные о тренировках и прогулках.
 
